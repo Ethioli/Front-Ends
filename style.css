@@ -1,0 +1,219 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+}
+ :root{
+    --main-bg: #1c1c1c;
+    --section-bg: #282828;
+    --text-color: #fff;
+    --accent-color: #ff6347;
+    --logo-font:38px ;
+ }
+
+ body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--main-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+ }
+ body::-webkit-scrollbar{
+    width: 10px;
+ }
+ body::-webkit-scrollbar-thumb{
+    background: var(--accent-color);
+    border:0;
+    border-radius: 10px;
+}
+.logo{
+    font-size: var(--logo-font);
+}
+nav{
+    width: 100%;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--main-bg);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0px 0px 7px 5px rgb(88,88,88,0.4);
+}
+.menus a{
+    margin: 0rem 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition:  color 0.3; 
+}
+.menus.showMenu{
+    width: 100%;
+    position: fixed;
+    top: 77px;
+    left: 0;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    transition:  opacity .8s ease;
+    opacity: 1;
+    visibility: visible;
+    background: var(--main-bg);
+}
+.menu-icon{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+} 
+.menu-icon div{
+    width: 30px;
+    height: 4px;
+    background: var(--text-color);
+    border: 0;
+    border-radius: 5px;
+    margin: 3px 0px;
+}
+section{
+    padding: 50px;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--section-bg);
+
+}
+section .content{
+    width: 90%;
+    opacity:0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+section .content .content-h{
+
+    opacity:0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+section .content.translateX{
+    transform: translateX(-50px);
+}
+section .content.visible{
+    opacity: 1;
+    transform: translate(0);
+}
+section .content .content-h.visible{
+    opacity: 1;
+    transform: translate(0);
+}
+.hero {
+    background: url('i.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.hero::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    background: #00000081;
+}
+.hero.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+.inner-hero-content{
+    z-index: 3;
+}
+#about .content{
+    display: flex;
+    align-items: center;
+}
+.avatar{
+    width: 300px;
+    border: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 3rem;
+}
+ .avatar img{
+    width: 100%;
+ }
+.project-card-container{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.projects .project{
+    margin: 20px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: var(--section-bg);
+    border:0;
+    border-radius: 10px;
+}
+.projects img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.footer{
+    background: #121212;
+}
+.footer p{
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #aaa;
+}
+h1{
+    margin-bottom: 20px;
+}
+p{
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+}
+.inner-hero-content a{
+    color: var(--accent-color);
+    text-decoration: none;
+    border: 2px solid var(--accent-color);
+    padding: 10px 20px;
+    transition: background 0.3 ease, color 0.3 ease;
+    border-radius: 5px;
+}
+a:hover{
+ background: var(--accent-color);
+ color:var(--text-color);
+}
+@media screen and ( max-width: 768px){
+    .menus{
+        opacity: 0;
+        visibility:  hidden;
+    }
+    .menu-icon{
+        display: flex;
+    }
+    .project-card-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    #about .content, #contact .content{
+        flex-direction: column;
+    }
+    nav a {
+        margin: 5px 0;
+    }
+}

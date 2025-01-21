@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            Ethioli
+        </div>
+        <div class="menus">
+            <a href="#hero" style="color:var(--accent-color);">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="menu-icon">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+    <section class="hero" id="hero">
+        <div class="inner-hero-content">
+            <h1 style="font-size: 35px;">Welcome to My <span style="color: var(--accent-color);">Portfolio</span></h1>
+            <p>Discover my work , project, and how to get in touch.</p>
+            <a href="#about">Learn More</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="content" >
+            <div class="avatar"><img src="r.png" alt=""></div>
+            <div>
+                <h1  style="font-size: 35px;">
+                    <span style="color: var(--accent-color);">About</span> me
+                </h1>
+                <p>
+                    I am a passionate web developer spacializing in creation beautiful and functional weebsite. My goal is to deliver the besr uder experiance through clean and efficient code.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="projects" id="projects" style="background:var(--main-bg);">
+        <div class="content">
+            <h1 class="content-h" style="font-size: 35px;">My Projects</h1>
+            <div class="project-card-container">
+                <div class="project">
+                    <img src="https://via.placeholder.com/300" alt="project1">
+                    <h2>Project 1</h2>
+                    <p>A description of this amazing project</p>
+                </div>
+                <div class="project">
+                    <img src="https://via.placeholder.com/300" alt="project2">
+                    <h2>Project 1</h2>
+                    <p>A description of this amazing project</p>
+                </div>
+                <div class="project">
+                    <img src="https://via.placeholder.com/300" alt="project3">
+                    <h2>Project 1</h2>
+                    <p>A description of this amazing project</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <div class="content translateX" style="width: 80%; display: flex; align-items: center; justify-content: space-between;">
+            <div style="max-width: 370px; width: 100%; margin-right: 2rem;">
+                <h1>Contact Me</h1>
+                <p>Feel free to reach out for collaboration or just a friendly chat.</p>
+            </div>
+            <form action="https://example.com/submit" method="POST" style="margin-top: 20px; max-width: 400px; width: 100%;">
+                <div style="margin-bottom: 15px;">
+                    <label for="name" style="display: block; margin-bottom: 5px;">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required
+                        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="email" style="display: block; margin-bottom: 5px;">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required
+                        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="message" style="display: block; margin-bottom: 5px;">Message</label>
+                    <textarea id="message" name="message" placeholder="Your Message" rows="5" required
+                        style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+                </div>
+                <button type="submit"
+                    style="background: var(--accent-color); color: var(--text-color); border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Send
+                    Message</button>
+            </form>
+        </div>
+    </section>
+    <section class="footer" id="footer" style="min-height: 50dvh;">
+        <div class="content">
+            <h1>Thank You and Please Subscribe our Channal </h1>
+            <p>&copy; 2024 My portfolio. all rights reserved</p>
+        </div>
+    </section>
+    <script>
+        const observerOptions ={
+            root:null,
+            threshold:0.1
+        };
+        const observerCallback = (entries)=>{
+            entries.forEach(entery => {
+                if(entery.isIntersecting){
+                    entery.target.classList.add('visible');
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        observer.observe(document.querySelector('.hero'));
+
+        document.querySelectorAll('section .content, section .content .content-h').forEach((content)=>{
+            observer.observe(content)
+        })
+
+        document.querySelector('.menu-icon').addEventListener('click',()=>{
+            const menu = document.querySelector('.menus');
+            menu.classList.toggle('showMenu')
+        });
+    </script>
+</body>
+</html>
